@@ -1,15 +1,26 @@
-import juan from './assets/juan-el-caballo-loco-630653_large.jpg'
-import jordi from './assets/jordi.jpg'
+import { useState } from "react";
 
-function Paragrafo() {
+const Paragrafo = (props) => {
+    const [pontos, setPontos] = useState(0);
+
+    const aumentarPontos = () => {
+        setPontos(pontos + 1);
+    };
+
+    const diminuirPontos = () => {
+        if (pontos > 0)
+        setPontos(pontos - 1);
+    };
+
     return (
-        <>
-        <p>
-            <img src={juan} width={150} alt="Juan" />
-            <img src={jordi} width={150} alt="Jordi" />
-        </p>
-        </>
-    )
+        <div>
+            <p>
+                {props.nome} tem {pontos} pontos.
+                <button onClick={aumentarPontos}>+</button>
+                <button onClick={diminuirPontos}>-</button>
+            </p>
+        </div>
+    );
 }
 
 export default Paragrafo;
